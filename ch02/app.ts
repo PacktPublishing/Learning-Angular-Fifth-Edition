@@ -1,0 +1,1 @@
+const title = 'Hello TypeScript!';
