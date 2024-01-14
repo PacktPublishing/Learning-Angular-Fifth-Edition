@@ -1,0 +1,23 @@
+@if (products.length > 0) {
+  <h1>Products ({{products.length}})</h1>
+}
+
+<ul class="pill-group">
+  @for (product of products | sort; track product.id) {
+    <li class="pill" (click)="selectedProduct = product">
+      @switch (product.title) {
+        @case ('Keyboard') { ⌨️ }
+        @case ('Microphone') { 🎙️ }
+        @default { 🏷️ }
+      }
+      {{product.title}}
+    </li>
+  } @empty {
+    <p>No products found!</p>
+  }
+</ul>
+
+<app-product-detail
+  [product]="selectedProduct"
+  (added)="onAdded()"
+></app-product-detail>
