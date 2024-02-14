@@ -1,0 +1,17 @@
+@if (product$ | async; as product) {
+  <p>You selected:
+    <strong>{{product.title}}</strong>
+  </p>
+  <p>{{product.price | currency:'EUR'}}</p>
+  <input placeholder="New price" #price appNumeric/>
+  <button class="secondary" (click)="changePrice(product, price.value)">Change</button>
+  <div class="pill-group">
+    <p class="pill">{{ product.category }}</p>
+  </div>
+  <div class="button-group">
+    @if (authService.isLoggedIn()) {  
+      <button (click)="addToCart()">Add to cart</button>
+    }
+    <button class="delete" (click)="deleted.emit()">Delete</button>
+  </div>
+}

@@ -1,0 +1,21 @@
+<h1>Add new product</h1>
+<div>
+  <label for="name">Name</label>
+  <input id="name" #name />
+</div>
+<div>
+  <label for="price">Price</label>
+  <input id="price" #price appNumeric />
+</div>
+<div>
+  <label for="category">Category</label>
+  <select id="category" #category>
+    <option>Select a category</option>
+    <option value="electronics">Electronics</option>
+    <option value="jewelery">Jewelery</option>
+    <option>Other</option>
+  </select>
+</div>
+<div>
+  <button (click)="createProduct(name.value, price.value, category.value)">Create</button>
+</div>
