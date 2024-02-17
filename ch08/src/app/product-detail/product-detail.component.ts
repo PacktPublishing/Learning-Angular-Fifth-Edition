@@ -38,5 +38,11 @@ export class ProductDetailComponent implements OnChanges {
   changePrice(product: Product, price: string) {
     this.productService.updateProduct(product.id, Number(price)).subscribe();
   }
+
+  remove(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe(() => {
+      this.deleted.emit();
+    });
+  }
   
 }
