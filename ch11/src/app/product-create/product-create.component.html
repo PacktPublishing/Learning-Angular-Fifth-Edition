@@ -1,0 +1,35 @@
+<h1>Add new product</h1>
+<form [formGroup]="productForm" (ngSubmit)="createProduct()">
+  <div>
+    <label for="title">Title</label>
+    <input id="title" formControlName="title" required />
+    @if (productForm.controls.title.touched && productForm.controls.title.invalid) {
+      <span class="help-text">Title is required</span>
+    }
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input id="price" formControlName="price" appNumeric required />
+    @if (productForm.controls.price.touched && productForm.controls.price.hasError('required')) {
+      <span class="help-text">Price is required</span>
+    }
+    @if (productForm.controls.price.touched && productForm.controls.price.hasError('min')) {
+      <span class="help-text">Price should be greater than 0</span>
+    }
+    @if (productForm.controls.price.touched && productForm.controls.price.hasError('priceMaximum')) {
+      <span class="help-text">Price must be smaller or equal to 1000</span>
+    }
+  </div>
+  <div>
+    <label for="category">Category</label>
+    <select id="category" formControlName="category">
+      <option value="">Select a category</option>
+      <option value="electronics">Electronics</option>
+      <option value="jewelery">Jewelery</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit" [disabled]="productForm.invalid">Create</button>
+  </div>
+</form>
