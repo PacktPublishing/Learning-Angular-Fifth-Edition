@@ -1,0 +1,31 @@
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h2>{{settings.title}}</h2>
+      <span class="spacer"></span>
+      <button mat-flat-button color="primary" routerLink="/products">Products</button>
+      <button
+        mat-flat-button
+        color="primary"
+        routerLink="/cart"
+        [matBadge]="cartService.cart?.products?.length"
+        matBadgeColor="accent">
+        My Cart
+      </button>
+      <button mat-flat-button color="primary" routerLink="/user">My Profile</button>
+      <app-auth></app-auth>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+<main class="main">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<footer>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span appCopyright> - v{{ settings.version }}</span> 
+    </mat-toolbar-row>
+  </mat-toolbar>
+</footer>

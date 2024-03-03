@@ -1,0 +1,52 @@
+@if (product$ | async; as product) {
+  <p>You selected:
+    <strong>{{product.title}}</strong>
+  </p>
+  <p>{{product.price | currency:'EUR'}}</p>
+  <form (ngSubmit)="changePrice(product)" #priceForm="ngForm">
+    <mat-form-field>
+      <input
+        type="number"
+        placeholder="New price"
+        appNumeric
+        name="price"
+        required min="1"
+        appPriceMaximum threshold="500"
+        matInput
+        #priceCtrl="ngModel"
+        [(ngModel)]="price"/>
+      <button
+        mat-icon-button
+        matSuffix 
+        color="primary"
+        type="submit"
+        [disabled]="priceForm.invalid">
+        <mat-icon>edit</mat-icon>
+      </button>    
+      @if (priceCtrl.dirty && (priceCtrl.invalid || priceCtrl.hasError('min'))) {
+        <mat-error>Please enter a valid price</mat-error>
+      }
+      @if (priceCtrl.dirty && priceCtrl.hasError('priceMaximum')) {
+        <mat-error>Price must be smaller or equal to 500</mat-error>
+      }
+    </mat-form-field>    
+  </form>  
+  <mat-chip-set>
+    <mat-chip>{{ product.category }}</mat-chip>
+  </mat-chip-set>
+  @if (authService.isLoggedIn()) {  
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addToCart(product.id)">
+      Add to cart
+    </button>
+  }
+  <button
+    mat-raised-button
+    color="warn"
+    class="delete"
+    (click)="remove(product)">
+    Delete
+  </button>
+}
