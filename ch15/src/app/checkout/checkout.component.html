@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Cart Checkout</h1>
+<mat-dialog-content>
+  <span>
+    You have {{ data }} pending items in your cart.
+    Do you want to continue?
+  </span>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    mat-dialog-close
+    color="primary">
+    Yes
+  </button>
+  <button mat-button [mat-dialog-close]="false">No</button>
+</mat-dialog-actions>
