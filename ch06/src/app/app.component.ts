@@ -1,10 +1,15 @@
-import { Component, Inject } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Signal,
+  computed,
+  signal 
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings, AppSettings } from './app.settings';
-import { ProductsModule } from './products/products.module';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +18,7 @@ import { ProductsModule } from './products/products.module';
     CommonModule,
     RouterOutlet,
     ProductListComponent,
-    CopyrightDirective,
-    ProductsModule
+    CopyrightDirective
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -23,7 +27,15 @@ import { ProductsModule } from './products/products.module';
   ]
 })
 export class AppComponent {
-  title = 'World';
+  protected title: Signal<string> | undefined;
+  protected currentDate = signal(new Date());
 
-  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {}
+  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
+    setInterval(() => {
+      this.currentDate.update(() => new Date());
+    }, 2000);
+    this.title = computed(() => {
+      return `${this.settings.title} (${this.currentDate()})`;
+    });  
+  }
 }
