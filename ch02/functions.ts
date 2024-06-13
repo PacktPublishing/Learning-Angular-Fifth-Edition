@@ -16,5 +16,3 @@ function addtoCart(productId: number, quantity?: number) {
     qty: quantity ?? 1
   };
 }
-
-const discount = (price: number) => (price / 100) * 10;

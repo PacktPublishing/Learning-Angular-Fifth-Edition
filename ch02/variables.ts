@@ -1,7 +1,7 @@
 // Primitive types
 const product: string = 'Keyboard';
-const price: number = 100;
 const isActive: boolean = true;
+const price: number = 100;
 const categories: string[] = ['Computing', 'Multimedia'];
 
 // Any
