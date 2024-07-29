@@ -1,11 +1,4 @@
-import {
-  Component,
-  Inject,
-  Signal,
-  computed,
-  signal 
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
@@ -16,7 +9,6 @@ import { Observable } from 'rxjs';
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     ProductListComponent,
     CopyrightDirective
@@ -28,32 +20,27 @@ import { Observable } from 'rxjs';
   ]
 })
 export class AppComponent {
-  title: Signal<string>;
+  title = 'World';
   title$ = new Observable(observer => {
     setInterval(() => {
       observer.next();
     }, 2000);
-  });
-  currentDate = signal(new Date());
+  });  
+  private setTitle = () => {
+    const timestamp = new Date();
+    this.title = `${this.settings.title} (${timestamp})`;
+  }  
   
   constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
     this.title$.subscribe(this.setTitle);
-    this.title = computed(() => {
-      return `${this.settings.title} (${this.currentDate()})`;
-    });
-  }
-
-  private setTitle = () => {
-    const timestamp = new Date();
-    this.currentDate.update(() => timestamp);
-  }  
+  }    
 
   private changeTitle(callback: Function) {
     setTimeout(() => {
       callback();
     }, 2000);
-  }  
-  
+  }
+
   private onComplete() {
     return new Promise<void>(resolve => {
       setInterval(() => {
