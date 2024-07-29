@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings, AppSettings } from './app.settings';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -27,15 +28,38 @@ import { APP_SETTINGS, appSettings, AppSettings } from './app.settings';
   ]
 })
 export class AppComponent {
-  protected title: Signal<string> | undefined;
-  protected currentDate = signal(new Date());
-
-  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
+  title: Signal<string>;
+  title$ = new Observable(observer => {
     setInterval(() => {
-      this.currentDate.update(() => new Date());
+      observer.next();
     }, 2000);
+  });
+  currentDate = signal(new Date());
+  
+  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
+    this.title$.subscribe(this.setTitle);
     this.title = computed(() => {
       return `${this.settings.title} (${this.currentDate()})`;
-    });  
+    });
   }
+
+  private setTitle = () => {
+    const timestamp = new Date();
+    this.currentDate.update(() => timestamp);
+  }  
+
+  private changeTitle(callback: Function) {
+    setTimeout(() => {
+      callback();
+    }, 2000);
+  }  
+  
+  private onComplete() {
+    return new Promise<void>(resolve => {
+      setInterval(() => {
+        resolve();
+      }, 2000);
+    });
+  }  
+  
 }
