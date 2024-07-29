@@ -11,7 +11,7 @@ describe('FavoritesComponent', () => {
       imports: [FavoritesComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(FavoritesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
