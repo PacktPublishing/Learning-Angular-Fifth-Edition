@@ -33,20 +33,6 @@ export class AppComponent {
   
   constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
     this.title$.subscribe(this.setTitle);
-  }    
-
-  private changeTitle(callback: Function) {
-    setTimeout(() => {
-      callback();
-    }, 2000);
-  }
-
-  private onComplete() {
-    return new Promise<void>(resolve => {
-      setInterval(() => {
-        resolve();
-      }, 2000);
-    });
-  }  
+  } 
   
 }
