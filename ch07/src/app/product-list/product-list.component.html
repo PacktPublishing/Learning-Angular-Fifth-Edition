@@ -5,7 +5,12 @@
 <ul class="pill-group">
   @for (product of products() | sort; track product.id) {
     <li class="pill" (click)="selectedProduct = product">
-      <app-product-view [id]="product.id"></app-product-view>
+      @switch (product.title) {
+        @case ('Keyboard') { ⌨️ }
+        @case ('Microphone') { 🎙️ }
+        @default { 🏷️ }
+      }
+      {{product.title}}
     </li>
   } @empty {
     <p>No products found!</p>

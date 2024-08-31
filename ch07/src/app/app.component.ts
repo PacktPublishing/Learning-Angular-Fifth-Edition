@@ -3,7 +3,7 @@ import {
   Inject,
   Signal,
   computed,
-  signal 
+  signal
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -26,21 +26,22 @@ import { Observable } from 'rxjs';
   ]
 })
 export class AppComponent {
-  title: Signal<string> | undefined;
+  title: Signal<string> = signal('');
   title$ = new Observable(observer => {
     setInterval(() => {
       observer.next();
     }, 2000);
   });
   currentDate = signal(new Date());
+  private setTitle = () => {
+    this.currentDate.set(new Date());
+  }  
   
   constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
-    setInterval(() => {
-      this.currentDate.update(() => new Date());
-    }, 2000);
+    this.title$.subscribe(this.setTitle);
     this.title = computed(() => {
       return `${this.settings.title} (${this.currentDate()})`;
-    });  
-  }
+    });
+  } 
   
 }
