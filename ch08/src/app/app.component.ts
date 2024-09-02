@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
@@ -10,7 +9,6 @@ import { AuthComponent } from './auth/auth.component';
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     ProductListComponent,
     CopyrightDirective,
@@ -20,7 +18,10 @@ import { AuthComponent } from './auth/auth.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'World';
-
-  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {}
+  title = 'World'; 
+  
+  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
+    this.title = settings.title;
+  } 
+  
 }

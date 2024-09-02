@@ -20,9 +20,9 @@ import { ProductCreateComponent } from '../product-create/product-create.compone
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
-  products$: Observable<Product[]> | undefined;  
+  products$: Observable<Product[]> | undefined;
   selectedProduct: Product | undefined;
-
+  
   constructor(private productService: ProductsService) {}
   
   onAdded() {
@@ -30,6 +30,10 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts();
+    this.getProducts();
   }
+
+  private getProducts() {
+    this.products$ = this.productService.getProducts();
+  }      
 }

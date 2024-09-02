@@ -9,13 +9,12 @@ import {
 import { Product } from '../product';
 import { Observable } from 'rxjs';
 import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, NumericDirective],
+  imports: [CommonModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -30,7 +29,7 @@ export class ProductDetailComponent implements OnChanges {
   addToCart() {
     this.added.emit();
   }
-
+  
   ngOnChanges(): void {
     this.product$ = this.productService.getProduct(this.id!);
   }
@@ -43,6 +42,6 @@ export class ProductDetailComponent implements OnChanges {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.deleted.emit();
     });
-  }
+  }  
   
 }
