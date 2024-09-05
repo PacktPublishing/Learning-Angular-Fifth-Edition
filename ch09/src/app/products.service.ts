@@ -8,11 +8,11 @@ import { APP_SETTINGS } from './app.settings';
   providedIn: 'root'
 })
 export class ProductsService {
-
+  
   private products: Product[] = [];
   private productsUrl = inject(APP_SETTINGS).apiUrl + '/products';
-
-  constructor(private http: HttpClient) {}
+  
+  constructor(private http: HttpClient) { }
 
   getProducts(limit?: number): Observable<Product[]> {
     if (this.products.length === 0) {
@@ -21,11 +21,11 @@ export class ProductsService {
         params: options
       }).pipe(map(products => {
         this.products = products;
-        return this.products;
+        return products;
       }));
     }
     return of(this.products);
-  }
+  }       
 
   getProduct(id: number): Observable<Product> {
     const product = this.products.find(p => p.id === id);

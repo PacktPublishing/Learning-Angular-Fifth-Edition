@@ -3,15 +3,15 @@
     <strong>{{product.title}}</strong>
   </p>
   <p>{{product.price | currency:'EUR'}}</p>
-  <input placeholder="New price" #price appNumeric/>
+  <input placeholder="New price" #price type="number" />
   <button class="secondary" (click)="changePrice(product, price.value)">Change</button>
   <div class="pill-group">
     <p class="pill">{{ product.category }}</p>
   </div>
-  <div class="button-group">
+  <div class="button-group">  
     @if (authService.isLoggedIn()) {  
       <button (click)="addToCart()">Add to cart</button>
-    }
+    }    
     <button class="delete" (click)="remove(product)">Delete</button>
   </div>
 }
