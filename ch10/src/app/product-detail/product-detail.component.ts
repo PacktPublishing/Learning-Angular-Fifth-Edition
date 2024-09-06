@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
 import { Observable, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
 import { AuthService } from '../auth.service';
 import { CartService } from '../cart.service';
 import { PriceMaximumDirective } from '../price-maximum.directive';
@@ -15,7 +14,6 @@ import { PriceMaximumDirective } from '../price-maximum.directive';
   standalone: true,
   imports: [
     CommonModule,
-    NumericDirective,
     FormsModule,
     PriceMaximumDirective
   ],
@@ -33,12 +31,12 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cartService: CartService
-  ) { }
+  ) { }    
 
   addToCart(id: number) {
     this.cartService.addProduct(id).subscribe();
-  }
-
+  }  
+  
   ngOnInit(): void {
     this.product$ = this.route.paramMap.pipe(
       switchMap(params => {
@@ -52,12 +50,12 @@ export class ProductDetailComponent implements OnInit {
       product.id,
       this.price!
     ).subscribe(() => this.router.navigate(['/products']));
-  }
-
+  }    
+  
   remove(product: Product) {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }
+  }    
   
 }

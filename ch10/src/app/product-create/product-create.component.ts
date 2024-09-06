@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
-import { Router } from '@angular/router';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductsService } from '../products.service';
 import { priceMaximumValidator } from '../price-maximum.validator';
 
 @Component({
   selector: 'app-product-create',
   standalone: true,
-  imports: [NumericDirective, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css'
 })
@@ -32,14 +31,14 @@ export class ProductCreateComponent {
       ]
     }),
     category: new FormControl('', { nonNullable: true })
-  });
+  });      
   
-  constructor(private productsService: ProductsService, private router: Router) {}
-
+  constructor(private productsService: ProductsService, private router: Router) {}  
+  
   createProduct() {
-    this.productsService.addProduct(this.productForm.value).subscribe(() => {
+    this.productsService.addProduct(this.productForm!.value).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }
+  }      
   
 }
