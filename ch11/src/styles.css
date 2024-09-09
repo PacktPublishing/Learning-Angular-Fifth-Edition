@@ -18,6 +18,12 @@ input.valid, input.ng-dirty.ng-valid {
 input.invalid, input.ng-dirty.ng-invalid {
   border: solid red;
 }
+input {
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #BDBDBD;
+}
 button {
   display: flex;
   align-items: center;
@@ -43,11 +49,8 @@ button:hover {
 a {
   text-decoration: none;
 }
-input {
-  border-radius: 4px;
-  padding: 8px;
-  margin-bottom: 16px;
-  border: 1px solid #BDBDBD;
+.spacer {
+  flex: 1 1 auto;
 }
 label {
   margin-bottom: 4px;

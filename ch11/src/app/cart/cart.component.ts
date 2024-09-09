@@ -8,12 +8,11 @@ import {
 import { Product } from '../product';
 import { CartService } from '../cart.service';
 import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [ReactiveFormsModule, NumericDirective],
+  imports: [ReactiveFormsModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -27,11 +26,11 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private productsService: ProductsService
   ) {}
-
+  
   ngOnInit(): void {
     this.getProducts();
     this.buildForm();
-  }  
+  }
 
   private getProducts() {
     this.productsService.getProducts().subscribe(products => {
@@ -43,7 +42,7 @@ export class CartComponent implements OnInit {
       });
     });
   }
-  
+
   private buildForm() {
     this.products.forEach(() => {
       this.cartForm.controls.products.push(
