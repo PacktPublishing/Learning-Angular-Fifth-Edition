@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, AppSettings } from './app.settings';
@@ -13,7 +12,6 @@ import { CartService } from './cart.service';
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
@@ -33,5 +31,8 @@ export class AppComponent {
   constructor(
     @Inject(APP_SETTINGS) public settings: AppSettings,
     public cartService: CartService
-  ) {}
+  ) {
+    this.title = settings.title;
+  } 
+  
 }

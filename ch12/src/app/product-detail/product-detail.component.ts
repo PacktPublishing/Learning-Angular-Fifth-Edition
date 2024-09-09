@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
 import { Observable, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
 import { AuthService } from '../auth.service';
 import { CartService } from '../cart.service';
 import { PriceMaximumDirective } from '../price-maximum.directive';
@@ -21,7 +20,6 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
   standalone: true,
   imports: [
     CommonModule,
-    NumericDirective,
     FormsModule,
     PriceMaximumDirective,
     MatButton,

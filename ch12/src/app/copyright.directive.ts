@@ -10,7 +10,7 @@ export class CopyrightDirective {
     const currentYear = new Date().getFullYear();
     const targetEl: HTMLElement = el.nativeElement;
     targetEl.classList.add('copyright');
-    targetEl.textContent = `Copyright ©${currentYear} All Rights Reserved.`;
+    targetEl.textContent = `Copyright ©${currentYear} All Rights Reserved`;
   }  
 
 }

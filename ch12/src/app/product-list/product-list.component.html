@@ -2,7 +2,7 @@
   @if (products.length > 0) {
     <div class="caption">
       <h1>Products ({{products.length}})</h1>
-      <button mat-mini-fab color="primary" routerLink="new">
+      <button mat-mini-fab routerLink="new">
         <mat-icon>add</mat-icon>
       </button>
       <span class="spacer"></span>
@@ -13,7 +13,7 @@
         <mat-button-toggle value="table">
           <mat-icon>grid_on</mat-icon>
         </mat-button-toggle>
-      </mat-button-toggle-group>
+      </mat-button-toggle-group>      
     </div>
 
     @if (group.value === 'card') {
@@ -45,6 +45,6 @@
         <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
         <tr mat-row *matRowDef="let row; columns: columnNames;"></tr>
       </table>
-    }
+    }        
   }
 }

@@ -34,6 +34,10 @@ export class ProductListComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  private getProducts() {
     this.products$ = this.route.data.pipe(
       switchMap(data => of(data['products']))
     );

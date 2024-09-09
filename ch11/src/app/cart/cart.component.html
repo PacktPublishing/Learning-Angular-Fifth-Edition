@@ -2,7 +2,7 @@
   <div formArrayName="products">
     @for(product of cartForm.controls.products.controls; track $index) {
       <label>{{products[$index].title}}</label>
-      <input [formControlName]="$index" appNumeric />
+      <input [formControlName]="$index" type="number" />
     }
   </div>
 </div>

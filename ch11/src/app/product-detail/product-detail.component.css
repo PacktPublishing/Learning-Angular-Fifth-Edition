@@ -30,14 +30,6 @@
   text-decoration: none;
 }
 
-input {
-  border-radius: 4px;
-  padding: 8px;
-  margin-bottom: 16px;
-  border: 1px solid #BDBDBD;
-  width: 200px;
-}
-
 button.secondary {
   display: inline;
   margin-left: 5px;

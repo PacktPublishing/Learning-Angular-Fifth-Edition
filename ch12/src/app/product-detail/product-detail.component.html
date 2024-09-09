@@ -6,19 +6,17 @@
   <form (ngSubmit)="changePrice(product)" #priceForm="ngForm">
     <mat-form-field>
       <input
-        type="number"
         placeholder="New price"
-        appNumeric
+        type="number"
         name="price"
         required min="1"
         appPriceMaximum threshold="500"
         matInput
         #priceCtrl="ngModel"
-        [(ngModel)]="price"/>
+        [(ngModel)]="price" />
       <button
         mat-icon-button
-        matSuffix 
-        color="primary"
+        matSuffix
         type="submit"
         [disabled]="priceForm.invalid">
         <mat-icon>edit</mat-icon>
@@ -30,14 +28,13 @@
         <mat-error>Price must be smaller or equal to 500</mat-error>
       }
     </mat-form-field>    
-  </form>  
+  </form>      
   <mat-chip-set>
     <mat-chip>{{ product.category }}</mat-chip>
-  </mat-chip-set>
+  </mat-chip-set>  
   @if (authService.isLoggedIn()) {  
     <button
       mat-raised-button
-      color="primary"
       (click)="addToCart(product.id)">
       Add to cart
     </button>
@@ -48,5 +45,5 @@
     class="delete"
     (click)="remove(product)">
     Delete
-  </button>
+  </button>  
 }

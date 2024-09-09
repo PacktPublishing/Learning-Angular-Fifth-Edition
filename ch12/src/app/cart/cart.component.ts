@@ -8,7 +8,6 @@ import {
 import { Product } from '../product';
 import { CartService } from '../cart.service';
 import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
 import { MatInput } from '@angular/material/input';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 
@@ -17,7 +16,6 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NumericDirective,
     MatInput,
     MatFormField,
     MatLabel
@@ -35,11 +33,11 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private productsService: ProductsService
   ) {}
-
+  
   ngOnInit(): void {
     this.getProducts();
     this.buildForm();
-  }  
+  }
 
   private getProducts() {
     this.productsService.getProducts().subscribe(products => {
@@ -51,7 +49,7 @@ export class CartComponent implements OnInit {
       });
     });
   }
-  
+
   private buildForm() {
     this.products.forEach(() => {
       this.cartForm.controls.products.push(
