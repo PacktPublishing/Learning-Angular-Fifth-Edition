@@ -11,22 +11,19 @@ class TestHostComponent { }
 
 describe('CopyrightDirective', () => {
   let container: HTMLElement;
-  
+
   beforeEach(() => {
     const fixture = TestBed.configureTestingModule({
-      imports: [
-        CopyrightDirective,
-        TestHostComponent
-      ]
+      imports: [TestHostComponent]
     })
     .createComponent(TestHostComponent);
     container = fixture.nativeElement.querySelector('span');
   });
-  
+
   it('should have copyright class', () => {
     expect(container.classList).toContain('copyright');
   });
-  
+
   it('should display copyright details', () => {
     expect(container.textContent).toContain(new Date().getFullYear().toString());
   });

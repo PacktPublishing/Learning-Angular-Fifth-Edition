@@ -1,8 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  ResolveFn,
+  RouterStateSnapshot
+} from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { itemsResolver } from './items.resolver';
-import { Observable } from 'rxjs';
 
 describe('itemsResolver', () => {
   const executeResolver: ResolveFn<string[]> = (...resolverParameters) => 

@@ -24,7 +24,7 @@ describe('BindingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BindingsComponent, TestHostComponent]
+      imports: [TestHostComponent]
     })
     .compileComponents();
     
@@ -47,12 +47,11 @@ describe('BindingsComponent', () => {
     button.click();
     expect(component.isFavorite).toBeTrue();
   });
-  
+
   it('should emit the liked event using harness', async () => {
     const loader = TestbedHarnessEnvironment.loader(fixture);
     const buttonHarness = await loader.getHarness(MatButtonHarness);
     await buttonHarness.click();
     expect(component.isFavorite).toBeTrue();
-  });  
+  });
 });
-
