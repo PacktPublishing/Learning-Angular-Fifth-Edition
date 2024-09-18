@@ -1,13 +1,13 @@
 <h1>Add new product</h1>
-<form [formGroup]="productForm" (ngSubmit)="createProduct()">
+<form [formGroup]="productForm!" (ngSubmit)="createProduct()">
   <mat-form-field>
     <mat-label>Title</mat-label>
     <input formControlName="title" matInput required />
     <mat-error>Title is required</mat-error>
-  </mat-form-field>
+  </mat-form-field>  
   <mat-form-field>
     <mat-label>Price</mat-label>
-    <input formControlName="price" matInput appNumeric required />
+    <input formControlName="price" matInput type="number" required />
     @if (productForm.controls.price.touched && productForm.controls.price.hasError('required')) {
       <mat-error>Price is required</mat-error>
     }
@@ -17,7 +17,7 @@
     @if (productForm.controls.price.touched && productForm.controls.price.hasError('priceMaximum')) {
       <mat-error>Price must be smaller or equal to 1000</mat-error>
     }
-  </mat-form-field>
+  </mat-form-field>        
   <mat-form-field>
     <mat-label>Category</mat-label>
     <mat-select formControlName="category">
@@ -25,11 +25,10 @@
       <mat-option value="jewelery">Jewelery</mat-option>
       <mat-option>Other</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field>  
   <div>
     <button
       mat-raised-button
-      color="primary"
       type="submit"
       [disabled]="productForm.invalid">
       Create

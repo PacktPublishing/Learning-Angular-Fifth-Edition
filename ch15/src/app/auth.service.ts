@@ -16,11 +16,11 @@ export class AuthService {
   login(username: string, password: string): Observable<string> {
     return this.http.post<string>(this.authUrl + '/login', {
       username, password
-    }).pipe(tap(token => this.accessToken.update(() => token)));
+    }).pipe(tap(token => this.accessToken.set(token)));
   }
 
   logout() {
     this.accessToken.update(() => '');
-  }
+  }  
   
 }

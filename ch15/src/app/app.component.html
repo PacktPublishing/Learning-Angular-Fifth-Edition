@@ -1,36 +1,35 @@
 <header>
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     <mat-toolbar-row>
-      <h2>{{settings.title}}</h2>
+      <h2>{{ title }}</h2>
       <span class="spacer"></span>
-      <button mat-flat-button color="primary" routerLink="/products">Products</button>
+      <button mat-button routerLink="/products">Products</button>
       <button
-        mat-flat-button
-        color="primary"
+        mat-button
         routerLink="/cart"
         [matBadge]="cartService.cart?.products?.length"
         matBadgeColor="accent">
         My Cart
       </button>
-      <button mat-flat-button color="primary" routerLink="/user">My Profile</button>
+      <button mat-button routerLink="/user">My Profile</button>
       <app-auth></app-auth>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
 <main class="main">
   <div class="content">
-    <router-outlet></router-outlet>
+    <router-outlet />
   </div>
   @defer() {
     <app-featured />
   } @placeholder(minimum 1s) {
-    <img src="assets/placeholder.png" />
+    <img src="placeholder.png" />
   } @error() {
     <span>An error occurred while loading the featured product</span>
-  }    
+  }  
 </main>
 <footer>
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     <mat-toolbar-row>
       <span appCopyright> - v{{ settings.version }}</span> 
     </mat-toolbar-row>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { NumericDirective } from '../numeric.directive';
 import { Router } from '@angular/router';
 import {
   FormControl,
@@ -18,7 +17,6 @@ import { MatSelect, MatOption } from '@angular/material/select';
   selector: 'app-product-create',
   standalone: true,
   imports: [
-    NumericDirective,
     ReactiveFormsModule,
     MatButton,
     MatInput,
@@ -46,14 +44,14 @@ export class ProductCreateComponent {
       ]
     }),
     category: new FormControl('', { nonNullable: true })
-  });
+  });      
   
-  constructor(private productsService: ProductsService, private router: Router) {}
-
+  constructor(private productsService: ProductsService, private router: Router) {}  
+  
   createProduct() {
-    this.productsService.addProduct(this.productForm.value).subscribe(() => {
+    this.productsService.addProduct(this.productForm!.value).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }
+  }      
   
 }
