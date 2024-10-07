@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   logout() {
-    this.accessToken.update(() => '');
+    this.accessToken.set('');
   }  
   
 }
