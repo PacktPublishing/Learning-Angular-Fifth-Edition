@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
 import { Observable, switchMap } from 'rxjs';
@@ -8,13 +8,12 @@ import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-product-detail',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() id: number | undefined;
+  id = input<number>();
   product$: Observable<Product> | undefined;
 
   constructor(
@@ -26,7 +25,7 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart() {
   }
-  
+
   ngOnInit(): void {
     this.product$ = this.route.paramMap.pipe(
       switchMap(params => {
@@ -45,6 +44,6 @@ export class ProductDetailComponent implements OnInit {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }    
+  }
   
 }

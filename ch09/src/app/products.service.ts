@@ -8,7 +8,6 @@ import { APP_SETTINGS } from './app.settings';
   providedIn: 'root'
 })
 export class ProductsService {
-  
   private products: Product[] = [];
   private productsUrl = inject(APP_SETTINGS).apiUrl + '/products';
   
@@ -25,7 +24,7 @@ export class ProductsService {
       }));
     }
     return of(this.products);
-  }       
+  }
 
   getProduct(id: number): Observable<Product> {
     const product = this.products.find(p => p.id === id);
@@ -40,7 +39,7 @@ export class ProductsService {
       })
     );
   }
-
+  
   updateProduct(id: number, price: number): Observable<Product> {
     return this.http.patch<Product>(`${this.productsUrl}/${id}`, {
       price

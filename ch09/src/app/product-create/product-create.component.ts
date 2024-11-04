@@ -4,7 +4,7 @@ import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product-create',
-  standalone: true,
+  imports: [],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css'
 })
@@ -17,6 +17,6 @@ export class ProductCreateComponent {
       price: Number(price),
       category
     }).subscribe(() => this.router.navigate(['/products']));
-  }  
+  }
 
 }
