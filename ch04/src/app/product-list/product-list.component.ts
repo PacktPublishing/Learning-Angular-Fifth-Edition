@@ -5,7 +5,6 @@ import { SortPipe } from '../sort.pipe';
 
 @Component({
   selector: 'app-product-list',
-  standalone: true,
   imports: [ProductDetailComponent, SortPipe],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'

@@ -1,8 +1,7 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appNumeric]',
-  standalone: true
+  selector: '[appNumeric]'
 })
 export class NumericDirective {
   @HostBinding('class') currentClass = '';
@@ -14,7 +13,7 @@ export class NumericDirective {
     } else {
       this.currentClass = 'valid';
     }
-  }  
+  }
   constructor() { }
 
 }
