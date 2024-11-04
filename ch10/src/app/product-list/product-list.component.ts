@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Observable, switchMap, of } from 'rxjs';
@@ -7,10 +7,9 @@ import { SortPipe } from '../sort.pipe';
 
 @Component({
   selector: 'app-product-list',
-  standalone: true,
   imports: [
     SortPipe,
-    CommonModule,
+    AsyncPipe,
     RouterLink
   ],
   templateUrl: './product-list.component.html',
@@ -18,7 +17,7 @@ import { SortPipe } from '../sort.pipe';
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> | undefined;
-  
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -29,5 +28,5 @@ export class ProductListComponent implements OnInit {
     this.products$ = this.route.data.pipe(
       switchMap(data => of(data['products']))
     );
-  }   
+  }
 }

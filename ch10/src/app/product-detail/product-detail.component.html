@@ -1,4 +1,5 @@
-@if (product$ | async; as product) {
+@let product = (product$ | async);
+@if (product) {
   <p>You selected:
     <strong>{{product.title}}</strong>
   </p>
@@ -12,19 +13,19 @@
       appPriceMaximum threshold="500"
       #priceCtrl="ngModel"
       [(ngModel)]="price" />
-      <button
-        class="secondary"
-        type="submit"
-        [disabled]="priceForm.invalid">
-        Change
-    </button>    
+    <button
+      class="secondary"
+      type="submit"
+      [disabled]="priceForm.invalid">
+      Change
+    </button>
     @if (priceCtrl.dirty && (priceCtrl.invalid || priceCtrl.hasError('min'))) {
       <span class="help-text">Please enter a valid price</span>
     }
     @if (priceCtrl.dirty && priceCtrl.hasError('priceMaximum')) {
       <span class="help-text">Price must be smaller or equal to 500</span>
-    }     
-  </form>    
+    }
+  </form>
   <div class="pill-group">
     <p class="pill">{{ product.category }}</p>
   </div>
