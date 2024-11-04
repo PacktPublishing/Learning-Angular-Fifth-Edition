@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../product';
@@ -9,11 +9,10 @@ import { ProductCreateComponent } from '../product-create/product-create.compone
 
 @Component({
   selector: 'app-product-list',
-  standalone: true,
   imports: [
     ProductDetailComponent,
     SortPipe,
-    CommonModule,
+    AsyncPipe,
     ProductCreateComponent
   ],
   templateUrl: './product-list.component.html',
@@ -22,7 +21,7 @@ import { ProductCreateComponent } from '../product-create/product-create.compone
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> | undefined;
   selectedProduct: Product | undefined;
-  
+
   constructor(private productService: ProductsService) {}
   
   onAdded() {
@@ -35,5 +34,5 @@ export class ProductListComponent implements OnInit {
 
   private getProducts() {
     this.products$ = this.productService.getProducts();
-  }      
+  }
 }

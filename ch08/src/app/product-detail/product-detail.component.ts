@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  EventEmitter,
-  Input,
-  Output,
+  input,
+  output,
   OnChanges
 } from '@angular/core';
 import { Product } from '../product';
@@ -13,15 +12,14 @@ import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-product-detail',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnChanges {
-  @Input() id: number | undefined;
-  @Output() added = new EventEmitter();
-  @Output() deleted = new EventEmitter();
+  id = input<number>();
+  added = output();
+  deleted = output();
   product$: Observable<Product> | undefined;
 
   constructor(private productService: ProductsService, public authService: AuthService) { }
@@ -31,7 +29,7 @@ export class ProductDetailComponent implements OnChanges {
   }
   
   ngOnChanges(): void {
-    this.product$ = this.productService.getProduct(this.id!);
+    this.product$ = this.productService.getProduct(this.id()!);
   }
 
   changePrice(product: Product, price: string) {
@@ -42,6 +40,6 @@ export class ProductDetailComponent implements OnChanges {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.deleted.emit();
     });
-  }  
+  }
   
 }

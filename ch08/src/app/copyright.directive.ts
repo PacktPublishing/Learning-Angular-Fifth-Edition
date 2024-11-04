@@ -1,8 +1,7 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appCopyright]',
-  standalone: true
+  selector: '[appCopyright]'
 })
 export class CopyrightDirective {
 
