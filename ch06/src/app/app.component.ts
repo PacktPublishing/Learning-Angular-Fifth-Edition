@@ -1,13 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
-import { APP_SETTINGS, appSettings, AppSettings } from './app.settings';
+import { APP_SETTINGS, appSettings } from './app.settings';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     ProductListComponent,
@@ -26,13 +25,15 @@ export class AppComponent {
       observer.next();
     }, 2000);
   });  
+  settings = inject(APP_SETTINGS);
+  
   private setTitle = () => {
     const timestamp = new Date();
     this.title = `${this.settings.title} (${timestamp})`;
-  }  
-  
-  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
+  }
+
+  constructor() {
     this.title$.subscribe(this.setTitle);
-  } 
+  }
   
 }

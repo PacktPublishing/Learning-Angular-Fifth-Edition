@@ -11,7 +11,7 @@ describe('KeyLoggerComponent', () => {
       imports: [KeyLoggerComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(KeyLoggerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
