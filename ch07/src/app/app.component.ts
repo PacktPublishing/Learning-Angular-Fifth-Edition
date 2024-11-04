@@ -1,6 +1,6 @@
 import {
   Component,
-  Inject,
+  inject,
   Signal,
   computed,
   signal
@@ -8,12 +8,11 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
-import { APP_SETTINGS, appSettings, AppSettings } from './app.settings';
+import { APP_SETTINGS, appSettings } from './app.settings';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     ProductListComponent,
@@ -31,17 +30,18 @@ export class AppComponent {
     setInterval(() => {
       observer.next();
     }, 2000);
-  });
+  });  
+  settings = inject(APP_SETTINGS);
   currentDate = signal(new Date());
   private setTitle = () => {
     this.currentDate.set(new Date());
-  }  
-  
-  constructor(@Inject(APP_SETTINGS) public settings: AppSettings) {
+  }
+
+  constructor() {
     this.title$.subscribe(this.setTitle);
     this.title = computed(() => {
       return `${this.settings.title} (${this.currentDate()})`;
     });
-  } 
+  }
   
 }
