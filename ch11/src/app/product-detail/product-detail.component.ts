@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
@@ -11,7 +11,6 @@ import { PriceMaximumDirective } from '../price-maximum.directive';
 
 @Component({
   selector: 'app-product-detail',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -21,7 +20,7 @@ import { PriceMaximumDirective } from '../price-maximum.directive';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() id: number | undefined;
+  id = input<number>();
   product$: Observable<Product> | undefined;
   price: number | undefined;
 
@@ -36,7 +35,7 @@ export class ProductDetailComponent implements OnInit {
   addToCart(id: number) {
     this.cartService.addProduct(id).subscribe();
   }  
-  
+
   ngOnInit(): void {
     this.product$ = this.route.paramMap.pipe(
       switchMap(params => {
@@ -50,12 +49,12 @@ export class ProductDetailComponent implements OnInit {
       product.id,
       this.price!
     ).subscribe(() => this.router.navigate(['/products']));
-  }    
+  }
   
   remove(product: Product) {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }    
+  }
   
 }

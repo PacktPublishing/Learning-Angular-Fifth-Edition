@@ -11,7 +11,6 @@ import { priceMaximumValidator } from '../price-maximum.validator';
 
 @Component({
   selector: 'app-product-create',
-  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css'
@@ -31,7 +30,7 @@ export class ProductCreateComponent {
       ]
     }),
     category: new FormControl('', { nonNullable: true })
-  });      
+  });   
   
   constructor(private productsService: ProductsService, private router: Router) {}  
   
@@ -39,6 +38,6 @@ export class ProductCreateComponent {
     this.productsService.addProduct(this.productForm!.value).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }      
-  
+  }
+
 }
