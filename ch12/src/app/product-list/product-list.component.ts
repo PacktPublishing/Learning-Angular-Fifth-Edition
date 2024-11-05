@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable, switchMap, of } from 'rxjs';
 import { Product } from '../product';
@@ -12,10 +12,10 @@ import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-
 
 @Component({
   selector: 'app-product-list',
-  standalone: true,
   imports: [
     SortPipe,
-    CommonModule,
+    AsyncPipe,
+    CurrencyPipe,
     RouterLink,
     MatMiniFabButton,
     MatIcon,
@@ -29,7 +29,7 @@ import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> | undefined;
-  columnNames = ['title', 'price'];  
+  columnNames = ['title', 'price'];
 
   constructor(private route: ActivatedRoute) {}
 

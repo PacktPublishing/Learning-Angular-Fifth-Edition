@@ -11,7 +11,7 @@ describe('CheckoutComponent', () => {
       imports: [CheckoutComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CheckoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

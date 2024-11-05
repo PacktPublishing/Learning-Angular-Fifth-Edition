@@ -1,14 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from './product';
-import { Observable, map, of, tap } from 'rxjs';
+import { Observable, map, of, tap, catchError, throwError } from 'rxjs';
 import { APP_SETTINGS } from './app.settings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  
   private products: Product[] = [];
   private productsUrl = inject(APP_SETTINGS).apiUrl + '/products';
   
@@ -19,13 +18,16 @@ export class ProductsService {
       const options = new HttpParams().set('limit', limit || 10);
       return this.http.get<Product[]>(this.productsUrl, {
         params: options
-      }).pipe(map(products => {
+      }).pipe(
+        map(products => {
           this.products = products;
           return products;
-      }));
+        }),
+        catchError(this.handleError)
+      );
     }
     return of(this.products);
-  }           
+  }
 
   getProduct(id: number): Observable<Product> {
     const product = this.products.find(p => p.id === id);
@@ -40,7 +42,7 @@ export class ProductsService {
       })
     );
   }
-
+  
   updateProduct(id: number, price: number): Observable<Product> {
     return this.http.patch<Product>(`${this.productsUrl}/${id}`, {
       price
@@ -60,6 +62,28 @@ export class ProductsService {
         this.products.splice(index, 1);
       })
     );
-  }  
-
+  }
+  
+  private handleError(error: HttpErrorResponse) {
+    let message = '';
+  
+    switch(error.status) {
+      case 0:
+        message = 'Client error';
+        break;
+      case HttpStatusCode.InternalServerError:
+        message = 'Server error';
+        break;
+      case HttpStatusCode.BadRequest:
+        message = 'Request error';
+        break;
+      default:
+        message = 'Unknown error';
+    }
+    
+    console.error(message, error.error);
+    
+    return throwError(() => error);
+  }
+  
 }

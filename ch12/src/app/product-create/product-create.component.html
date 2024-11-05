@@ -4,7 +4,7 @@
     <mat-label>Title</mat-label>
     <input formControlName="title" matInput required />
     <mat-error>Title is required</mat-error>
-  </mat-form-field>  
+  </mat-form-field>
   <mat-form-field>
     <mat-label>Price</mat-label>
     <input formControlName="price" matInput type="number" required />
@@ -17,7 +17,7 @@
     @if (productForm.controls.price.touched && productForm.controls.price.hasError('priceMaximum')) {
       <mat-error>Price must be smaller or equal to 1000</mat-error>
     }
-  </mat-form-field>        
+  </mat-form-field>
   <mat-form-field>
     <mat-label>Category</mat-label>
     <mat-select formControlName="category">

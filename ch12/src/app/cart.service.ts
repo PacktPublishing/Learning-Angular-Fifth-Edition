@@ -8,7 +8,6 @@ import { APP_SETTINGS } from './app.settings';
   providedIn: 'root'
 })
 export class CartService {
-
   cart: Cart | undefined;
   private cartUrl = inject(APP_SETTINGS).apiUrl + '/carts';
   

@@ -13,7 +13,6 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-cart',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatInput,
@@ -33,12 +32,12 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private productsService: ProductsService
   ) {}
-  
+
   ngOnInit(): void {
     this.getProducts();
     this.buildForm();
   }
-
+  
   private getProducts() {
     this.productsService.getProducts().subscribe(products => {
       this.cartService.cart?.products.forEach(item => {
@@ -56,5 +55,5 @@ export class CartComponent implements OnInit {
         new FormControl(1, { nonNullable: true })
       );
     });      
-  }  
+  }
 }

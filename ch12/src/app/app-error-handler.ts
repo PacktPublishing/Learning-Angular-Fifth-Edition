@@ -24,7 +24,7 @@ export class AppErrorHandler implements ErrorHandler {
     } else {
       message = 'Application error';
     }
-
+  
     console.error(message, err);
   }  
 }

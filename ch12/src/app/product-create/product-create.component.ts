@@ -15,7 +15,6 @@ import { MatSelect, MatOption } from '@angular/material/select';
 
 @Component({
   selector: 'app-product-create',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatButton,
@@ -44,7 +43,7 @@ export class ProductCreateComponent {
       ]
     }),
     category: new FormControl('', { nonNullable: true })
-  });      
+  });   
   
   constructor(private productsService: ProductsService, private router: Router) {}  
   
@@ -52,6 +51,6 @@ export class ProductCreateComponent {
     this.productsService.addProduct(this.productForm!.value).subscribe(() => {
       this.router.navigate(['/products']);
     });
-  }      
-  
+  }
+
 }

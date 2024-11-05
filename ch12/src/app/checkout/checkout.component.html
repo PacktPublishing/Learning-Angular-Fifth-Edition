@@ -3,13 +3,9 @@
   <span>
     You have {{ data }} pending items in your cart.
     Do you want to continue?
-  </span>  
+  </span>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button
-    mat-raised-button
-    mat-dialog-close>
-    Yes
-  </button>
+  <button mat-raised-button mat-dialog-close>Yes</button>
   <button mat-button [mat-dialog-close]="false">No</button>
 </mat-dialog-actions>

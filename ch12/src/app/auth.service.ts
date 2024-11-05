@@ -10,7 +10,7 @@ export class AuthService {
   private accessToken = signal('');
   private authUrl = inject(APP_SETTINGS).apiUrl + '/auth';
   isLoggedIn = computed(() => this.accessToken() !== '');
-
+  
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<string> {
