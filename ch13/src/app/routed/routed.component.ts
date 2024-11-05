@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-routed',
-  standalone: true,
   template: '<span>{{ title }}</span>'
 })
 export class RoutedComponent {

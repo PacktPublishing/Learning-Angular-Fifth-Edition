@@ -24,7 +24,7 @@ describe('DepsService', () => {
     const req = httpTestingController.expectOne('http://some.url');
     expect(req.request.method).toBe('GET');
   });
-
+  
   it('should add an item', () => {
     service.addItem('Camera').subscribe();
     const req = httpTestingController.expectOne('http://some.url');
@@ -33,8 +33,8 @@ describe('DepsService', () => {
       name: 'Camera',
     });
   });
-
+  
   afterEach(() => {
     httpTestingController.verify();
-  });  
+  });
 });

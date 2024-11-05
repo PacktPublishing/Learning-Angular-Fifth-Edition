@@ -24,5 +24,5 @@ describe('itemsResolver', () => {
     (executeResolver({} as ActivatedRouteSnapshot, {} as RouterStateSnapshot) as Observable<string[]>).subscribe(items => {
       expect(items).toEqual(['Microphone', 'Keyboard']);
     })
-  });
+  });  
 });

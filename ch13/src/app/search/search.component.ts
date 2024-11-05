@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 
 @Component({
   selector: 'app-search',
-  standalone: true,
   imports: [ReactiveFormsModule],
   template: `
     <form [formGroup]="searchForm" (ngSubmit)="search()">

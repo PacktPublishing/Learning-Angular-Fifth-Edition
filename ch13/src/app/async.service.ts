@@ -11,7 +11,7 @@ export class AsyncService {
 
   getItems(): Observable<string[]> {
     return of(items).pipe(delay(500));
-  }  
+  }
 
   setItems(name: string) {
     return [...items, name ];

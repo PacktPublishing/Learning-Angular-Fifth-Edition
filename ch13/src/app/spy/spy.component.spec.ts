@@ -48,4 +48,4 @@ it('should get the title', async () => {
   fixture.detectChanges();
   
   expect(fixture.nativeElement.textContent).toContain('My title');
-});  
+});

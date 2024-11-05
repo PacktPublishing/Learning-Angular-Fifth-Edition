@@ -28,5 +28,5 @@ describe('AsyncComponent', () => {
     
     const itemDisplay: HTMLElement[] = fixture.nativeElement.querySelectorAll('p');
     expect(itemDisplay.length).toBe(2);
-  }));  
+  })); 
 });

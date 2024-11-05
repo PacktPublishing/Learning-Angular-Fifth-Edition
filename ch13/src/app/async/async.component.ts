@@ -1,12 +1,11 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AsyncService } from '../async.service';
 
 @Component({
   selector: 'app-async',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [AsyncPipe],
   template: `
     @for(item of items$ | async; track item) {
       <p>{{ item }}</p>

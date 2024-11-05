@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { CopyrightDirective } from './copyright.directive';
 
 @Component({
-  standalone: true,
   imports: [CopyrightDirective],
   template: '<span appCopyright></span>'
 })

@@ -9,5 +9,5 @@ describe('ListPipe', () => {
   it('should return an array', () => {
     const pipe = new ListPipe();
     expect(pipe.transform('A,B,C')).toEqual(['A', 'B', 'C']);
-  });  
+  });
 });

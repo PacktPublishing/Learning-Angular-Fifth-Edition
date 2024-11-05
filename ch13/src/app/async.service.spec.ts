@@ -24,5 +24,5 @@ describe('AsyncService', () => {
       expect(items.length).toBe(2);
       done();
     });
-  });   
+  });
 });

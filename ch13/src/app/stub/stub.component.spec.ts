@@ -17,7 +17,7 @@ describe('StubComponent', () => {
         { provide: StubService, useValue: serviceStub }
       ]
     })
-    .compileComponents();    
+    .compileComponents();  
     
     fixture = TestBed.createComponent(StubComponent);
     component = fixture.componentInstance;
@@ -47,5 +47,5 @@ describe('StubComponent', () => {
       fixture.detectChanges();
       expect(msgDisplay.textContent).toContain('is available');
     });
-  });  
+  });
 });

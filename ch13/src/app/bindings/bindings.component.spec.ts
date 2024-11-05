@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { HarnessLoader } from '@angular/cdk/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
+import { By } from '@angular/platform-browser';
 
 import { BindingsComponent } from './bindings.component';
 
 @Component({
-  standalone: true,
   imports: [BindingsComponent],
   template: `
     <app-bindings [title]="testTitle" (liked)="isFavorite = true"></app-bindings>
@@ -45,6 +44,12 @@ describe('BindingsComponent', () => {
   it('should emit the liked event', () => {
     const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
     button.click();
+    expect(component.isFavorite).toBeTrue();
+  });  
+  
+  it('should emit the liked event using debugElement', () => {
+    const buttonDe = fixture.debugElement.query(By.css('button'));
+    buttonDe.triggerEventHandler('click');
     expect(component.isFavorite).toBeTrue();
   });
 

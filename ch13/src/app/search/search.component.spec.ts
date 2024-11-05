@@ -11,7 +11,7 @@ describe('SearchComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SearchComponent, ReactiveFormsModule]
     })
-    .compileComponents();    
+    .compileComponents();
     
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
@@ -42,5 +42,5 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
     button.click();
     expect(spy).toHaveBeenCalledWith('You searched for: Angular');
-  });  
+  });
 });

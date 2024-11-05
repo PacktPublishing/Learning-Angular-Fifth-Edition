@@ -3,7 +3,6 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-spy',
-  standalone: true,
   template: '{{ caption }}'
 })
 export class SpyComponent implements OnInit {
