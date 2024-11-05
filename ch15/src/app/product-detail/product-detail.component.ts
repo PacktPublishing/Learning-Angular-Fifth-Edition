@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
@@ -17,7 +17,6 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -37,7 +36,7 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() id: number | undefined;
+  id = input<number>();
   product$: Observable<Product> | undefined;
   price: number | undefined;
 
@@ -72,7 +71,7 @@ export class ProductDetailComponent implements OnInit {
       this.price!
     ).subscribe(() => this.router.navigate(['/products']));
   }
-
+  
   remove(product: Product) {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.router.navigate(['/products']);

@@ -8,7 +8,6 @@ import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-featured',
-  standalone: true,
   imports: [CommonModule, MatButton, MatCardModule],
   templateUrl: './featured.component.html',
   styleUrl: './featured.component.css'

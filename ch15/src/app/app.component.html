@@ -1,14 +1,13 @@
 <header>
   <mat-toolbar>
     <mat-toolbar-row>
-      <h2>{{ title }}</h2>
+      <h2>{{ settings.title }}</h2>
       <span class="spacer"></span>
       <button mat-button routerLink="/products">Products</button>
       <button
         mat-button
         routerLink="/cart"
-        [matBadge]="cartService.cart?.products?.length"
-        matBadgeColor="accent">
+        [matBadge]="cartService.cart?.products?.length">
         My Cart
       </button>
       <button mat-button routerLink="/user">My Profile</button>
@@ -26,7 +25,7 @@
     <img src="placeholder.png" />
   } @error() {
     <span>An error occurred while loading the featured product</span>
-  }  
+  }
 </main>
 <footer>
   <mat-toolbar>

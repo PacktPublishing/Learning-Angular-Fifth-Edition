@@ -2,8 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Product } from './product';
 
 @Pipe({
-  name: 'sort',
-  standalone: true
+  name: 'sort'
 })
 export class SortPipe implements PipeTransform {
 
@@ -17,7 +16,7 @@ export class SortPipe implements PipeTransform {
         }
         return 0;
       });
-    }  
+    }
     return [];
   }
 

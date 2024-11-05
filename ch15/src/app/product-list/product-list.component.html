@@ -1,50 +1,49 @@
-@if (products$ | async; as products) {
-  @if (products.length > 0) {
-    <div class="caption">
-      <h1>Products ({{products.length}})</h1>
-      <button mat-mini-fab routerLink="new">
-        <mat-icon>add</mat-icon>
-      </button>
-      <span class="spacer"></span>
-      <mat-button-toggle-group #group="matButtonToggleGroup">
-        <mat-button-toggle value="card" checked>
-          <mat-icon>list</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="table">
-          <mat-icon>grid_on</mat-icon>
-        </mat-button-toggle>
-      </mat-button-toggle-group>      
-    </div>
+@let products = (products$ | async)!;
 
-    @if (group.value === 'card') {
-      @for (product of products | sort; track product.id) {
-        <mat-card [routerLink]="[product.id]">
-          <mat-card-header>
-            <mat-card-title-group>
-              <mat-card-title>{{ product.title }}</mat-card-title>
-              <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
-              <img mat-card-sm-image [ngSrc]="product.image" fill>
-            </mat-card-title-group>            
-          </mat-card-header>
-        </mat-card>
-      } @empty {
-        <p>No products found!</p>
-      }
-    } @else {
-      <table mat-table [dataSource]="products">
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>Title</th>
-          <td mat-cell *matCellDef="let product">
-            <a [routerLink]="[product.id]">{{ product.title }}</a>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef>Price</th>
-          <td mat-cell *matCellDef="let product">{{ product.price | currency }}</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnNames;"></tr>
-      </table>
-    }        
+@if (products.length > 0) {
+  <div class="caption">
+    <h1>Products ({{products.length}})</h1>
+    <button mat-mini-fab routerLink="new">
+      <mat-icon>add</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <mat-button-toggle-group #group="matButtonToggleGroup">
+      <mat-button-toggle value="card" checked>
+        <mat-icon>list</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="table">
+        <mat-icon>grid_on</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  @if (group.value === 'card') {
+    @for (product of products | sort; track product.id) {
+      <mat-card [routerLink]="[product.id]">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ product.title }}</mat-card-title>
+            <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+            <img mat-card-sm-image [ngSrc]="product.image" fill>
+          </mat-card-title-group>
+        </mat-card-header>
+      </mat-card>
+    } @empty {
+      <p>No products found!</p>
+    }
+  } @else {
+    <table mat-table [dataSource]="products">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let product">
+          <a [routerLink]="[product.id]">{{ product.title }}</a>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let product">{{ product.price | currency }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnNames;"></tr>
+    </table>
   }
 }

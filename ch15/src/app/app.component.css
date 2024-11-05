@@ -87,25 +87,6 @@ main {
   margin-inline-start: 0.25rem;
 }
 
-.menu-links {
-  display: flex;
-  align-items: center;
-  gap: 0.73rem;
-}
-
-.menu-links a {
-  transition: fill 0.3s ease;
-  color: var(--gray-400);
-}
-
-.menu-links a:hover {
-  color: var(--gray-900);
-}
-
-.menu-links a.active {
-  color: var(--electric-violet);
-}
-
 @media screen and (max-width: 650px) {
   .content {
     flex-direction: column;

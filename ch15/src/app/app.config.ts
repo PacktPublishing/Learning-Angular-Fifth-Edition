@@ -6,7 +6,7 @@ import { routes } from './app.routes';
 import { APP_SETTINGS, appSettings } from './app.settings';
 import { AppErrorHandler } from './app-error-handler';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideClientHydration } from '@angular/platform-browser';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withFetch()),
     { provide: APP_SETTINGS, useValue: appSettings },
-    { provide: ErrorHandler, useClass: AppErrorHandler },
-    provideAnimationsAsync(), provideClientHydration()
+    { provide: ErrorHandler, useClass: AppErrorHandler }, provideAnimationsAsync(), provideClientHydration(withEventReplay())
   ]
 };

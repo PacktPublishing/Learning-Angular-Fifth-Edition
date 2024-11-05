@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CopyrightDirective } from './copyright.directive';
-import { APP_SETTINGS, AppSettings } from './app.settings';
+import { APP_SETTINGS } from './app.settings';
 import { AuthComponent } from './auth/auth.component';
 import { MatToolbarRow, MatToolbar } from '@angular/material/toolbar';
 import { MatButton } from '@angular/material/button';
@@ -11,11 +11,9 @@ import { FeaturedComponent } from './featured/featured.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     RouterLink,
-    RouterLinkActive,
     CopyrightDirective,
     AuthComponent,
     MatToolbarRow,
@@ -28,13 +26,6 @@ import { FeaturedComponent } from './featured/featured.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'World';
-
-  constructor(
-    @Inject(APP_SETTINGS) public settings: AppSettings,
-    public cartService: CartService
-  ) {
-    this.title = settings.title;
-  } 
-  
+  settings = inject(APP_SETTINGS);
+  cartService = inject(CartService);
 }

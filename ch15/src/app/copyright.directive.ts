@@ -1,17 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Directive, ElementRef, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Directive, ElementRef, inject, OnInit, PLATFORM_ID } from '@angular/core';
 
 @Directive({
-  selector: '[appCopyright]',
-  standalone: true
+  selector: '[appCopyright]'
 })
 export class CopyrightDirective implements OnInit {
 
-  constructor(
-    private el: ElementRef,
-    @Inject(PLATFORM_ID) private platform: Object
-  ) {}
-  
+  private platform = inject(PLATFORM_ID);
+  private el = inject(ElementRef);
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platform)) {
       const currentYear = new Date().getFullYear();
@@ -19,6 +16,6 @@ export class CopyrightDirective implements OnInit {
       targetEl.classList.add('copyright');
       targetEl.textContent = `Copyright ©${currentYear} All Rights Reserved ${targetEl.textContent}`;
     }
-  }    
+  }
 
 }

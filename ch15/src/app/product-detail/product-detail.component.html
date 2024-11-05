@@ -1,4 +1,5 @@
-@if (product$ | async; as product) {
+@let product = (product$ | async);
+@if (product) {
   <p>You selected:
     <strong>{{product.title}}</strong>
   </p>
@@ -20,7 +21,7 @@
         type="submit"
         [disabled]="priceForm.invalid">
         <mat-icon>edit</mat-icon>
-      </button>    
+      </button>
       @if (priceCtrl.dirty && (priceCtrl.invalid || priceCtrl.hasError('min'))) {
         <mat-error>Please enter a valid price</mat-error>
       }
@@ -28,7 +29,7 @@
         <mat-error>Price must be smaller or equal to 500</mat-error>
       }
     </mat-form-field>    
-  </form>      
+  </form>
   <mat-chip-set>
     <mat-chip>{{ product.category }}</mat-chip>
   </mat-chip-set>  
