@@ -5,7 +5,6 @@ import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-favorites',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css'

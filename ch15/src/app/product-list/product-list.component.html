@@ -1,6 +1,6 @@
 @let products = (products$ | async)!;
 
-@if (products.length > 0) {
+@if (products) {
   <div class="caption">
     <h1>Products ({{products.length}})</h1>
     <button mat-mini-fab routerLink="new">

@@ -30,9 +30,15 @@
   text-decoration: none;
 }
 
-button.secondary, button.delete {
+button.secondary {
   display: inline;
   margin-left: 5px;
+}
+
+button.delete {
+  display: inline;
+  margin-left: 5px;
+  color: brown;
 }
 
 mat-chip-set {
