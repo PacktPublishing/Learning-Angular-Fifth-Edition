@@ -30,7 +30,7 @@ describe('DepsService', () => {
     const req = httpTestingController.expectOne('http://some.url');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
-      name: 'Camera',
+      name: 'Camera'
     });
   });
   
