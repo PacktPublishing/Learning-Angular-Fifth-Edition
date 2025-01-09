@@ -68,6 +68,6 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 
 ## Get to Know the Author
-**Aristeidis Bampakos** has over 20 years of experience in the software development industry. He currently works as a web development team leader at Plex-Earth, specializing in the development of web applications using Angular. His career started as a C# .NET developer, but he saw the potential of web development and moved toward it in early 2011. He began working with AngularJS and in 2020 he was offi cially recognized as a Google Developer Expert (GDE) for Angular.</br>
+**Aristeidis Bampakos** has over 20 years of experience in the software development industry. He currently works as a web development team leader at Plex-Earth, specializing in the development of web applications using Angular. His career started as a C# .NET developer, but he saw the potential of web development and moved toward it in early 2011. He began working with AngularJS and in 2020 he was officially recognized as a Google Developer Expert (GDE) for Angular.</br>
 Aristeidis is passionate about helping the developer community learn and grow. His love for teaching has led him to become an award-winning author of the successful book titles Learning Angular and Angular Projects. He enjoys being speaking about Angular in meetups, conferences, and podcasts. He is also currently leading the effort to make Angular accessible to the Greek development community by maintaining the open-source Greek translation of the official Angular documentation.
 
